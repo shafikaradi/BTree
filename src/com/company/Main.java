@@ -1,21 +1,46 @@
 package com.company;
 
-import com.Model.BTreeThread;
-import com.Model.BTree;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
 
-       var btree = new BTree();
-       Thread t =  new Thread(new BTreeThread(btree),"BTree");
-
-       t.start();
+          BTree tree = new BTree();
+         int items [] = {100,2,92,3,994};
 
 
-        t.join();
-        btree.printItems();
+        for (int i:items) {
+
+
+        }
+
+
+
+
+        new Thread(() -> {
+         tree.add(100);
+        }).start();
+
+        new Thread(() -> {
+            tree.add(2);
+        }).start();
+
+        new Thread(() -> {
+            tree.add(92);
+        }).start();
+
+        new Thread(() -> {
+            tree.add(3);
+        }).start();
+
+        new Thread(() -> {
+            tree.add(10);
+        }).start();
+
+
+        System.out.println(tree.search(92));
+
 
 
         System.exit(0);
